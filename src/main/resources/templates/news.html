@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>News-API</title>
+<link rel="stylesheet" th:href="@{/css/default.css}" />
+
+
+</head>
+<body>
+	<!-- BEGIN wrapper -->
+	<div id="wrapper">
+		<!-- BEGIN header -->
+		<div id="header">
+			<div class="break"></div>
+			<div class="logo">
+				<h1>News Indonesia</h1>
+				<br />
+				<p th:text="'categories :'+${categories}"></p>
+			</div>
+
+			<div class="break"></div>
+			<ol>
+			</ol>
+			<div class="break"></div>
+		</div>
+		<!-- END header -->
+		<!-- BEGIN content -->
+		<div id="content">
+			<!-- begin post -->
+			<div class="post" th:each="respones : ${respones}">
+				<div class="thumb">
+					<img th:src="${respones.Articles.urlToImage}" height="70px" width="70px" />
+				</div>
+				<h2>
+					<a th:text="${respones.Articles.title}" th:href="${respones.Articles.urlother}"></a>
+				</h2>
+				<p class="date" th:text="${respones.Articles.publishedAt}"></p>
+				<p th:text="${respones.Articles.description}"></p>
+			</div>
+			<!-- end post -->
+
+
+		</div>
+		<!-- END content -->
+		<!-- BEGIN sidebar -->
+		<div id="sidebar">
+			<!-- begin ads -->
+			<!-- end ads -->
+			<!-- begin search -->
+			<div class="wrapper">
+				<!-- begin popular posts -->
+				<h2>Popular Posts</h2>
+				<ul th:each="respones : ${respones}">
+					<li><a th:text="${respones.Articles.title}" th:href="${respones.Articles.urlother}"></a></li>
+				</ul>
+				<!-- end popular posts -->
+
+				<!-- begin tags -->
+
+				<div class="tags"></div>
+				<!-- end tags -->
+				<!-- BEGIN left -->
+				<div class="l sbar">
+				
+				</div>
+			</div>
+		</div>
+		<!-- END sidebar -->
+		<!-- BEGIN footer -->
+		<div id="footer">
+			<p>
+				Copyright &copy; 2023 - <a
+					href="https://www.indopay.com/">Indopay</a> &middot; All Rights Reserved
+			</p>
+		</div>
+		<!-- END footer -->
+	</div>
+	<!-- END wrapper -->
+</body>
+</html>
